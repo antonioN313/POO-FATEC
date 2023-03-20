@@ -1,0 +1,32 @@
+package fatec.poo.model;
+
+public class contaBancaria {
+    
+    private int numero;
+    private double saldo;
+    
+    public contaBancaria(int numero, double saldo)
+    {
+        this.numero = numero;
+        this.saldo = saldo;
+    }
+    
+    public int getNumero() {
+        return numero;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+    
+    public void sacar(double saque)
+    {
+        saldo -= saque;
+    }
+    
+    public void depositar(double valor)
+    {
+        saldo += valor;
+    }
+    
+}
