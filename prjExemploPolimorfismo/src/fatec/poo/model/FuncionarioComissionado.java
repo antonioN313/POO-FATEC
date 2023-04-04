@@ -44,4 +44,8 @@ public class FuncionarioComissionado extends Funcionario{
         }
         return(0);
     }
+    
+    public double calcSalLiquido(){
+        return(calcSalBruto() - calcDesconto() + calcGratificacao());
+    }
 }
