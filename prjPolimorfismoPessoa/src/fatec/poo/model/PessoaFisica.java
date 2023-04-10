@@ -24,7 +24,7 @@ public class PessoaFisica extends Pessoa {
     @Override
     public double calcBonus(int anoAtual) {
         if(getTotalCompras() > 12000.00){
-            return(calcBonus() * getBase());
+            return((anoAtual - getAnoInscricao()) * getBase());
         }
        return 0; 
     }

@@ -12,11 +12,8 @@ public abstract class Pessoa {
         this.anoInscricao = anoInscricao;
     }
     
-    abstract public double calcBonus();
+    abstract public double calcBonus(int anoAtual);
     
-    public double calcBonus(int anoAtual){
-        return(anoAtual - getAnoInscricao());
-    }
     
     public void addCompras(double totalCompras)
     {
