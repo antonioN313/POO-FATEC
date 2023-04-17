@@ -6,7 +6,7 @@ public class aplicacaoHotel {
 
     public static void main(String[] args) {
         
-        int numQuarto,numRG,dias,opcao,qtquartos = 10,i;
+        int numQuarto,numRG,dias,opcao,qtquartos = 2,i;
         double valorDiaria,faturamentoHotel = 0;
         
         Scanner pedido = new Scanner (System.in);
@@ -14,13 +14,13 @@ public class aplicacaoHotel {
         
         quartoHotel[] quarto;
         quarto = new quartoHotel[qtquartos];
+        System.out.println("Valor da Diaria dos quartos de Hotel: ");
+        valorDiaria = pedido.nextDouble();
         
         for(i = 0; i< qtquartos;i++)
         {
             System.out.println("Numero do quarto:");
             numQuarto = pedido.nextInt();
-            System.out.println("Valor da Diaria: ");
-            valorDiaria = pedido.nextDouble();
             quarto[i] = new quartoHotel(numQuarto,valorDiaria);
         }
         
@@ -37,96 +37,108 @@ public class aplicacaoHotel {
             
             switch(opcao)
             {
-                case 1:
-                    System.out.println("Numero do quarto:");
-                    numQuarto = pedido.nextInt();
-                    for(i=0;i<qtquartos; i++)
-                    {
-                        if(quarto[i].getNumQuarto()== numQuarto)
+                case 1:System.out.println("Numero do quarto:");
+                        numQuarto = pedido.nextInt();
+                        for(i=0;i<qtquartos; i++)
                         {
+                            if(quarto[i].getNumQuarto() == numQuarto)
+                            {
                             break;
+                            }
                         }
-                    }
-                    if(i == 10)
-                    {
-                      System.out.print("Quarto não Cadastrado");  
-                    }
-                case 2:
-                    System.out.println("Numero do quarto:");
-                    numQuarto = pedido.nextInt();
-                    for(i=0;i<qtquartos; i++)
-                    {
-                        if(quarto[i].getNumQuarto()== numQuarto)
+                        if(i == quarto.length)
                         {
+                          System.out.print("Quarto não Cadastrado");  
+                        }
+                        else{
                             if(quarto[i].isSituacao() == false)
-                            {
-                                System.out.println("Digite o numero de RG: ");
-                                numRG = pedido.nextInt();
-                                quarto[i].reservar(numRG);
-                                
-                            }
-                            else{
-                                System.out.println("Quarto já foi reservado.");
-                            }
-                            break;
+                                {
+                                    System.out.println("Quarto Livre");
+
+                                }
+                                else{
+                                    System.out.println("Quarto reservado.");
+                                }
                         }
-                    }
-                    if(i == 10)
-                    {
-                      System.out.print("Quarto não Cadastrado");  
-                    }
-                    
-                case 3:
-                    System.out.println("Numero do quarto:");
-                    numQuarto = pedido.nextInt();
-                    for(i=0;i<qtquartos; i++)
-                    {
-                        if(quarto[i].getNumQuarto()== numQuarto)
+                        break;
+                case 2:System.out.println("Numero do quarto:");
+                        numQuarto = pedido.nextInt();
+                        for(i=0;i<qtquartos; i++)
                         {
-                            if(quarto[i].isSituacao() == true)
+                            if(quarto[i].getNumQuarto()== numQuarto)
                             {
-                                System.out.println("Quantidades de dias no quarto:");
-                                dias = pedido.nextInt();
-                                quarto[i].liberar(dias);
-                                
+                                break;
                             }
-                            else{
-                                System.out.println("Quarto já está livre.");
-                            }
-                            break;
                         }
-                    }
-                    if(i == 10)
-                    {
-                      System.out.print("Quarto não Cadastrado");  
-                    }
-                    
-                case 4:
-                    System.out.println("Numero do quarto:");
-                    numQuarto = pedido.nextInt();
-                    for(i=0;i<qtquartos; i++)
-                    {
-                        if(quarto[i].getNumQuarto()== numQuarto)
+                        if(i == quarto.length)
                         {
+                          System.out.print("Quarto não Cadastrado");  
+                        }
+                        else{
+                            if(quarto[i].isSituacao() == false)
+                                {
+                                    System.out.println("Digite o numero de RG: ");
+                                    numRG = pedido.nextInt();
+                                    quarto[i].reservar(numRG);
+
+                                }
+                                else{
+                                    System.out.println("Quarto já foi reservado.");
+                                }
+                        }
+                        break;
+                case 3: System.out.println("Numero do quarto:");
+                        numQuarto = pedido.nextInt();
+                        for(i=0;i<qtquartos; i++)
+                        {
+                            if(quarto[i].getNumQuarto()== numQuarto)
+                            {
+                                break;
+                            }
+                        }
+                        if(i == quarto.length)
+                        {
+                          System.out.print("Quarto não Cadastrado");  
+                        }
+                        else
+                        {
+                             if(quarto[i].isSituacao() == true)
+                                {
+                                    System.out.println("Quantidades de dias no quarto:");
+                                    dias = pedido.nextInt();
+                                    quarto[i].liberar(dias);   
+                                }
+                                else{
+                                    System.out.println("Quarto já está livre.");
+                                }
+                        }
+                        break;
+                case 4: System.out.println("Numero do quarto:");
+                        numQuarto = pedido.nextInt();
+                        for(i=0;i<qtquartos; i++)
+                        {
+                            if(quarto[i].getNumQuarto()== numQuarto)
+                            {
+                                break;
+                            }
+                        }
+                        if(i == quarto.length)
+                        {
+                          System.out.print("Quarto não Cadastrado");  
+                        }
+                        else{
                             System.out.println("Quarto:"+ quarto[i].getNumQuarto());
                             System.out.println("Faturamento total:R$ "+pedidoDF.format(quarto[i].getTotalFaturado()));
-                            break;
                         }
-                    }
-                    if(i == 10)
-                    {
-                      System.out.print("Quarto não Cadastrado");  
-                    }
-                case 5:                   
-                    for(i=0;i<qtquartos; i++)
-                    {
-                        faturamentoHotel += quarto[i].getTotalFaturado();
-                    }
-                    
-                    System.out.println("Faturamento do Hotel:R$ "+pedidoDF.format(faturamentoHotel));
-                    
+                        break;
+                case 5:for(i=0;i<qtquartos; i++)
+                        {
+                            faturamentoHotel += quarto[i].getTotalFaturado();
+                        }
+
+                        System.out.println("Faturamento do Hotel:R$ "+pedidoDF.format(faturamentoHotel));
+                        break;
             }
         }while(opcao != 6);
-    }
-    
+    }  
 }

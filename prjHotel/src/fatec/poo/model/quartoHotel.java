@@ -23,7 +23,7 @@ public class quartoHotel {
     public double liberar(int dias)
     {
         totalFaturado += (valorDiaria * dias);
-        numRG = 0;
+        this.numRG = 0;
         situacao = false;
         return(valorDiaria * dias);
     }
